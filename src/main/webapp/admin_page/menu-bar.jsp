@@ -26,7 +26,7 @@
 							<ul class="submenu-angle" aria-expanded="true">
 
 								<li class="list-group-item"><a title="Quản lý môn học"
-									href="../admin/subjectmanagement"><i
+									href="./subject-managenment-admin"><i
 										class="fa-solid fa-book"></i> <span class="mini-sub-pro">Quản
 											lý môn học</span></a></li>
 								<li class="list-group-item"><a title="Quản lý thông báo"

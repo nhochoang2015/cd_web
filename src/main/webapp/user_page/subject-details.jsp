@@ -1,9 +1,5 @@
-<%@page import="elementary_web.dto.SubjectDTO"%>
-<%@page import="elementary_web.dto.ChapterDTO"%>
-<%@page import="elementary_web.dto.LessonDTO"%>
-
+<%@page import="hotel_booking.dto.SubjectDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="elementary_web.dto.LessonCompleteDTO"%>
 <%@page import="java.util.List"%>
 
 
@@ -12,113 +8,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="user_page/css/subject-details.css" rel="stylesheet">
 </head>
 
 <body>
 	<%@include file="header.jsp"%>
-	<!-- Môn học -->
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb" style="text-align: center">
+			<li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Thông tin
+				cá nhân</li>
+		</ol>
+	</nav>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item"><a class="nav-link active" id="home-tab"
+			data-toggle="tab" href="#home" role="tab" aria-controls="home"
+			aria-selected="true">Thông tin</a></li>
+	</ul>
 	<%
-	AccountDTO account = (AccountDTO) session.getAttribute("account");
-	SubjectDTO subject = (SubjectDTO) request.getAttribute("subject");
-	List<LessonCompleteDTO> lessonCompleteList = (List<LessonCompleteDTO>) request.getAttribute("lessonCompleteList");
+	SubjectDTO subjectDTO = (SubjectDTO) request.getAttribute("subject");
 	%>
-	<div class="container-fluid pt-5">
-		<div class="container">
-			<div class="text-center pb-2">
-				<p class="section-title px-5 subject-title">
-					<span class="px-2"><%=subject.getSubjectName()%></span>
-				</p>
+	<div class="tab-pane fade show active" id="home" role="tabpanel"
+		aria-labelledby="profile-tab">
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only">Email</label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Tên môn học">
 			</div>
-			<%
-			ArrayList<ChapterDTO> chaperDTOList = (ArrayList<ChapterDTO>) subject.getChapterList();
-			%>
-			<div class="row">
-				<%
-				for (ChapterDTO chapter : chaperDTOList) {
-				%>
-				<div class="col-lg-4 mb-5">
-					<div class="card border-0 bg-light shadow-sm pb-2 subject-image">
-						<img class="card-img-top mb-2" src="user_page/img/class-1.jpg"
-							alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title">
-								<%=chapter.getChapterName()%></h4>
-						</div>
-						<div class="card-footer bg-transparent py-4 px-5 subject-lessons">
-							<%
-							ArrayList<LessonDTO> lessonList = (ArrayList<LessonDTO>) chapter.getLessonList();
-							for (LessonDTO lesson : lessonList) {
-							%>
-							<div class="row border-bottom">
-
-								<div class="col-10 py-1">
-									<a <%if (account != null) {%>
-										href="./quiz?lessonID=<%=lesson.getLessonID()%>&subjectID=<%=subject.getSubjectID()%>"
-										<%%> <%} else {%> href="./login" <%}%>> <%=lesson.getLessonName()%>
-									</a>
-								</div>
-								<%
-								if (lessonCompleteList != null) {
-								%>
-								<div class="col-2 py-1">
-									<%
-									if (lesson.isComplete(lessonCompleteList)) {
-									%>
-									<i class="fa-solid fa-check"></i>
-									<%
-									} else {
-									%>
-									<i class="fa-solid fa-xmark"></i>
-									<%
-									}
-									%>
-								</div>
-								<%
-								}
-								%>
-							</div>
-							<%
-							}
-							%>
-						</div>
-						<%
-						if (lessonCompleteList != null) {
-							if (chapter.isChapterComplete(lessonCompleteList)) {
-						%>
-						<a href="./test?chapterID=<%=chapter.getChapterID() %>" class="btn btn-primary px-4 mx-auto mb-4">Kiểm
-							tra</a>
-						<%
-						}
-						}
-						%>
-					</div>
-				</div>
-
-				<%
-				}
-				%>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <input
+					type="text" class="form-control" id="inputPassword2"
+					value="<%=subjectDTO.getSubjectName()%>" disabled="disabled">
 			</div>
-
-
-		</div>
+		</form>
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only"></label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Giá">
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <input
+					type="text" class="form-control" id="inputPassword2"
+					value="<%=subjectDTO.getPrice()%>" disabled="disabled">
+			</div>
+		</form>
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only"></label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Buổi học">
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <input
+					type="email" class="form-control" id="inputPassword2"
+					value="<%=subjectDTO.getWeekday()%>" disabled="disabled">
+			</div>
+		</form>
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only"></label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Giờ học">
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <input
+					type="text" class="form-control" id="inputPassword2"
+					value="<%=subjectDTO.getTime()%>" disabled="disabled">
+			</div>
+		</form>
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only"></label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Ghi chú">
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <input
+					type="text" class="form-control" id="inputPassword2"
+					value="<%=subjectDTO.getComment()%> " disabled="disabled">
+			</div>
+		</form>
+		<form class="form-inline" style="margin-top: 20px; margin-left: 20px">
+			<div class="form-group mb-2">
+				<label for="staticEmail2" class="sr-only"></label> <input
+					type="text" readonly class="form-control-plaintext"
+					id="staticEmail2" value="Xem thông tin giáo viên">
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputPassword2" class="sr-only">Password</label> <a
+					class="btn btn-primary"
+					href="./infomation?accountID=<%=subjectDTO.getAccountID()%>">Xem
+					thông tin</a>
+			</div>
+			
+		</form>
+		<%if(accountDTO.getRoleName().equals("HOC_SINH")){ %>
+		<a
+					class="btn btn-primary" style="margin-left: 230px;margin-top: 50px"
+					href="./regist?subjectID=<%=subjectDTO.getSubjectID()%>">Đăng ký môn học</a>
+		<%} %>
 	</div>
+					
 
 
-	<%
-	String notify = (String) request.getAttribute("notify");
-	if (notify != null) {
-	%>
 
-	<script type="text/javascript">
-	alert('<%=notify%>
-		');
-	</script>
-	<%
-	}
-	%>
 	<%@include file="footer.jsp"%>
-	<script type="text/javascript" src="user_page/js/subject-details.js"></script>
+
 </body>
 
 </html>

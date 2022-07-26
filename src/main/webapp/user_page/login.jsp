@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,12 @@
 	<jsp:include page="header.jsp" />
 
 
-
 	<div class="limiter">
 
 		<div class="container-login100"
 			style="background-image: url('images/login.jpg'); padding-top: 90px">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
 				<form class="login100-form validate-form" action="./handleLogin"
 					method="POST">
 					<span class="login100-form-title p-b-49"> Đăng nhập </span>
@@ -26,6 +27,7 @@
 							class="input100" type="text" id="username" name="username"
 							placeholder="Tên đăng nhập/Email/Số điện thoại"> <span
 							class="focus-input100" data-symbol="&#xf206;"></span>
+
 					</div>
 
 					<div class="wrap-input100 validate-input"

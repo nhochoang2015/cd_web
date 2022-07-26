@@ -3,8 +3,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
+
 <!doctype html>
-<html class="no-js" lang="vi">
+<html class="no-js" lang="en">
 
 <head>
 <title>Notification Management | Admin Page</title>

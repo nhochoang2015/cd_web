@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@page import="elementary_web.dto.LessonDTO"%>
-<%@page import="elementary_web.dto.QuestionDTO"%>
+<%@page import="hotel_booking.dto.LessonDTO"%>
+<%@page import="hotel_booking.dto.QuestionDTO"%>
 
 <!DOCTYPE html>
 <html lang="en">

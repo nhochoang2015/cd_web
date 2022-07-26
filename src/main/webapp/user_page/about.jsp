@@ -6,8 +6,8 @@
 
 </head>
 
+
 <body>
-	<%@include file="header.jsp"%>
 	<!-- About Start -->
 	<div class="container-fluid py-5">
 		<div class="container">
@@ -227,7 +227,6 @@
 		</div>
 	</div>
 	<!-- Team End -->
-	<%@include file="footer.jsp"%>
 </body>
 
 </html>

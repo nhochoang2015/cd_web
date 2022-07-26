@@ -12,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
 </head>
 <style>
 img {
@@ -71,7 +70,7 @@ img {
 															</div>
 															<div class="form-group">
 																<label>Tiền xu</label> <input name="coin" type="number"
-																	class="form-control" value="<%=accountDTO.getCoin()%>"
+																	class="form-control" value=""
 																	required>
 															</div>
 															<div class="form-group">
@@ -101,19 +100,19 @@ img {
 															<div class="form-group">
 																<label>Điểm tích lũy</label> <input name="totalPoint"
 																	class="form-control"
-																	value="<%=accountDTO.getTotalPoint()%>"
+																	value=""
 																	readonly>
 															</div>
 															<div class="form-group">
 																<label>Điểm tích lũy Tuần</label> <input
 																	type="number" class="form-control"
-																	value="<%=accountDTO.getWeeklyPoint()%>" 
+																	value="" 
 																	readonly>
 															</div>
 															<div class="form-group">
 																<label>Điểm tích lũy Tháng</label> <input
 																	type="number" class="form-control"
-																	value="<%=accountDTO.getMonthlyPoint()%>"
+																	value=""
 																	readonly>
 															</div>
 															<div class="form-group">

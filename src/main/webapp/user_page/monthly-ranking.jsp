@@ -26,13 +26,13 @@
 				<div class="col-sm-4">
 					<div class="leaderboard-card leaderboard-card-second">
 						<div class="leaderboard-card__top">
-							<h3 class="text-center">${rankingList.get(1).monthlyPoint}</h3>
+							<h3 class="text-center"></h3>
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
 								<img src="#" class="circle-img mb-2"
 									alt="User Img">
-								<h5 class="mb-0">${rankingList.get(1).nickName}</h5>
+								<h5 class="mb-0"></h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
 									<button class="btn btn-outline-success btn-sm">Chúc
@@ -46,13 +46,13 @@
 				<div class="col-sm-4">
 					<div class="leaderboard-card leaderboard-card-first">
 						<div class="leaderboard-card__top">
-							<h3 class="text-center">${rankingList.get(0).monthlyPoint}</h3>
+							<h3 class="text-center"></h3>
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
 								<img src="#" class="circle-img mb-2"
 									alt="User Img">
-								<h5 class="mb-0">${rankingList.get(0).nickName}</h5>
+								<h5 class="mb-0"></h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
 									<button class="btn btn-outline-success btn-sm">Chúc
@@ -66,13 +66,13 @@
 				<div class="col-sm-4">
 					<div class="leaderboard-card leaderboard-card-third">
 						<div class="leaderboard-card__top">
-							<h3 class="text-center">${rankingList.get(2).monthlyPoint}</h3>
+							<h3 class="text-center"></h3>
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
 								<img src="#" class="circle-img mb-2"
 									alt="User Img">
-								<h5 class="mb-0">${rankingList.get(2).nickName}</h5>
+								<h5 class="mb-0"></h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
 									<button class="btn btn-outline-success btn-sm">Chúc
@@ -97,7 +97,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${rankingList}" var="rankingList">
+					<c:forEach items="" var="rankingList">
 						<tr>
 							<td>
 								<div class="d-flex align-items-baseline">
@@ -109,13 +109,13 @@
 									<img src="#" class="circle-img circle-img--small mr-2"
 										alt="User Img">
 									<div class="user-info__basic">
-										<h5 class="mb-0">${rankingList.nickName}</h5>
+										<h5 class="mb-0"></h5>
 									</div>
 								</div>
 							</td>
 							<td>
 								<div class="d-flex align-items-baseline">
-									<h4 class="mr-1">${rankingList.monthlyPoint}</h4>
+									<h4 class="mr-1"></h4>
 								</div>
 							</td>
 							<td>

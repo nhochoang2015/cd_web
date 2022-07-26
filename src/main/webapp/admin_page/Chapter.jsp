@@ -90,7 +90,6 @@
 									</div>
 								</div>
 								<%
-								// Rồi ông
 								List<ChapterDTO> chapterList = (List<ChapterDTO>) request.getAttribute("chapterList");
 								for (ChapterDTO chapter : chapterList) {
 								%>
@@ -107,7 +106,8 @@
 												</div>
 												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 													<div class="actions graph-rp">
-														<a href="#">
+														<a
+															href="../admin/lessonManagement?chapterID=<%=chapter.getChapterID()%>">
 															<button type="button" class="btn btn-primary"
 																title="Xem bài tập">
 																<i class="fa-solid fa-circle-info"></i>
@@ -130,37 +130,11 @@
 										</div>
 									</li>
 								</ul>
-								<%
-								}
-								%>
 								<!-- Modal -->
-								<form>
-									<div class="modal fade in" id="deleteChapter" tabindex="-1"
-										role="dialog" aria-labelledby="exampleModalLabel"
-										aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Xóa
-														chương</h5>
-												</div>
-												<div class="modal-body">
-
-													<div class="mb-3">Unactive Chapter!!!</div>
-												</div>
-												<div class="modal-footer">
-													<button type="submit" class="btn btn-danger">Xác
-														nhận</button>
-													<button type="button" class="btn btn-default"
-														data-dismiss="modal">Close</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
-								<!-- Modal -->
-								<form>
-									<div class="modal fade in" id="createChapter" tabindex="-1"
+								<form
+									action="./createChapter?subjectID=<%=chapter.getSubjectID()%>"
+									method="POST">
+									<div class="modal fade" id="createChapter" tabindex="-1"
 										role="dialog" aria-labelledby="exampleModalLabel"
 										aria-hidden="true">
 										<div class="modal-dialog" role="document">
@@ -174,11 +148,9 @@
 													<div class="mb-3">
 														<label for="validationCustom01" class="form-label">Tên
 															chương</label> <input type="text" class="form-control"
-															id="validationCustom01" placeholder="Tên chương" required>
+															name="chapterName" id="validationCustom01"
+															placeholder="Tên chương" required>
 													</div>
-
-
-
 												</div>
 												<div class="modal-footer">
 													<button type="submit" class="btn btn-primary">Tạo</button>
@@ -190,7 +162,7 @@
 									</div>
 								</form>
 								<!-- Modal -->
-								<form>
+								<form action="./renameChapter?chapterID=<%=chapter.getChapterID()%>&chapterName=" method="POST">
 									<div class="modal fade in" id="updateChapterName" tabindex="-1"
 										role="dialog" aria-labelledby="exampleModalLabel"
 										aria-hidden="true">
@@ -205,7 +177,7 @@
 													<div class="mb-3">
 														<label for="validationCustom01" class="form-label">Tên
 															chương</label> <input type="text" class="form-control"
-															id="validationCustom01" placeholder="Tên chương" required>
+															id="validationCustom01" placeholder="Tên chương" value = "<%=chapter.getChapterName()%>"name="chapterName" required>
 													</div>
 
 
@@ -221,6 +193,11 @@
 										</div>
 									</div>
 								</form>
+								<%
+								}
+								%>
+
+								
 
 							</div>
 						</div>

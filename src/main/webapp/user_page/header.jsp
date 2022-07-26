@@ -1,13 +1,15 @@
+<%@page import="java.util.List"%>
+<%@page import="hotel_booking.dto.NotificationDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="elementary_web.dto.AccountDTO"%>
+<%@page import="hotel_booking.dto.AccountDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="elementary_web.dto.SubjectDTO"%>
+<%@page import="hotel_booking.dto.SubjectDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>KidKinder - Kindergarten Website Template</title>
+<title>Hotel - Booking</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="Free HTML Templates" name="keywords">
 <meta content="Free HTML Templates" name="description">
@@ -56,7 +58,7 @@
 			<div>
 				<a href="./" class="navbar-brand font-weight-bold text-secondary"
 					style="font-size: 50px;"> <i class="fa-solid fa-book-open"></i>
-					<span class="text-primary">LEARN</span>
+					<span class="text-primary">Booking-Hotels</span>
 				</a>
 			</div>
 			<button type="button" class="navbar-toggler" data-toggle="collapse"
@@ -67,65 +69,89 @@
 			<div class="collapse navbar-collapse justify-content-between"
 				id="navbarCollapse">
 				<div class="navbar-nav font-weight-bold mx-auto py-0">
-					<a href="./" class="nav-item nav-link active">Home</a> <a
-						href="/monthly-ranking" class="nav-item nav-link">Leaderboard</a>
-					<%-- <div class="nav-item dropdown">
-						<a href="user_page/#" class="nav-link dropdown-toggle"
-							data-toggle="dropdown">Môn học</a>
-						<%
-						ArrayList<SubjectDTO> subjectList = (ArrayList<SubjectDTO>) request.getAttribute("subjectList");
-						%>
-						<div class="dropdown-menu rounded-0 m-0">
-							<%
-							for (SubjectDTO subject : subjectList) {
-							%>
-							<a href="./subject-details?subjectID=<%=subject.getSubjectID()%>"
-								class="dropdown-item"><%=subject.getSubjectName()%></a>
-							<%
-							}
-							%>
-						</div>
-					</div>
- --%>
-					<a href="/about" class="nav-item nav-link">Thông báo</a>
+					<a href="./" class="nav-item nav-link active">Home</a> <a href="./"
+						class="nav-item nav-link">Trang chủ</a>
 					<%
 					AccountDTO accountDTO = (AccountDTO) session.getAttribute("account");
+
 					if (accountDTO != null) {
 					%>
 					<!-- Trường họp người dùng đã đăng nhập -->
-					<a class="nav-item nav-link" data-toggle="modal"
-						data-target="#store">Cửa hàng</a> <a class="nav-item nav-link">Quản
-						lý thông tin cá nhân</a>
-
+					<a class="nav-item nav-link" href="./q&a">Q&A</a>
+					
+						
+						
 					<%
 					if (accountDTO.getRoleName().equals("ADMIN")) {
 					%>
 
-					<a href="./admin/accountManagement" class="nav-item nav-link">Amin Page</a>
+					<a href="./admin/accountManagement" class="nav-item nav-link">Amin
+						Page</a>
+					<div id="logout-container">
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								style="margin: auto; margin-left: 10px" aria-haspopup="true"
+								aria-expanded="false">
+								<i class="fa-solid fa-user"></i>
+								<%=accountDTO.getNickName()%>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item"
+									href="./account?accountID=<%=accountDTO.getAccountID()%>">Tài
+									khoản</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="./logout">Logout</a>
 
+							</div>
+						</div>
+					</div>
+					<%
+					}
+					if (accountDTO.getRoleName().equals("USER")) {
+					%>
+					<div id="logout-container">
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								style="margin: auto; margin-left: 10px" aria-haspopup="true"
+								aria-expanded="false">
+								<i class="fa-solid fa-user"></i>
+								<%=accountDTO.getNickName()%>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item"
+									href="./account?accountID=<%=accountDTO.getAccountID()%>">Tài
+									khoản</a> <a class="dropdown-item" href="./subject-management">Quản
+									lý môn</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="./logout">Logout</a>
+							</div>
+						</div>
+						
+					</div>
+					
 					<%
 					}
 					%>
-
-					<div id="login-container">
-						<i class="fa-solid fa-user fa-2xl" id="user-icon"></i> <br>
-						<p id="account-name"><%=accountDTO.getNickName()%></p>
-						<p id="point">
-							ĐIỂM HIỆN CÓ:
-							<%=accountDTO.getCoin()%></p>
-					</div>
-					<div id="logout-container">
-						<a id="logout-button" href="./logout"
-							class="fa-solid fa-arrow-right-from-bracket fa-3x"></a>
-					</div>
+					<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								style="margin: auto; margin-left: 10px;margin-top: 25px" aria-haspopup="true" 
+								aria-expanded="false">
+								<i class="fa-solid fa-bell"></i>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item"> thông báo 1
+								</a>
+							</div>
+						</div>
 					<%
 					} else {
 					%>
-					<div id="login-container">
-
-						<i class="fa-solid fa-user fa-2xl" id="user-icon"></i> <a
-							href="./login" class="btn btn-primary px-4" id="login-button">Đăng
-							nhập</a> <a href="user_page/" class="btn btn-primary px-4"
+					<div id="login-container" style="margin-left: 10px">
+						<a href="./login" class="btn btn-primary px-4" id="login-button">Đăng
+							nhập</a> <a href="./signup" class="btn btn-primary px-4"
 							id="sign-in-button">Đăng ký</a>
 					</div>
 
@@ -136,290 +162,8 @@
 			</div>
 		</nav>
 	</div>
-	<!-- Navbar End -->
 
-	<!-- Store Start -->
-	<div id="store" class="modal fade" role="dialog">
-		<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title w-100 text-center">Cửa hàng</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-				</div>
-				<div class="modal-body">
-					<ul class="nav nav-tabs">
-						<li class="tabs" id="first-tab"><a data-toggle="tab"
-							href="#avatar-tab">Avatar</a></li>
-						<li class="tabs"><a data-toggle="tab" href="#frame-tab">Khung</a></li>
-						<li class="tabs"><a data-toggle="tab" href="#items-tab">Vật
-								phẩm</a></li>
-					</ul>
-					<div class="tab-content">
-						<div id="avatar-tab" class="tab-pane active in">
-							<div class="row store-container">
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-							</div>
-
-						</div>
-						<div id="frame-tab" class="tab-pane fade">
-							<div class="row store-container">
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div id="items-tab" class="tab-pane fade">
-							<div class="row store-container">
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-								<div class="col-3  store-items-container">
-									<div class="store-image">
-										<img alt="" src="user_page/img/frame.jpg">
-									</div>
-									<div class="store-infromation">
-										<p>Tên</p>
-										<p>Giá</p>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<!-- Store End -->
 </body>
 </html>

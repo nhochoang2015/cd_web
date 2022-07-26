@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@page import="elementary_web.dto.QuestionDTO"%>
+<%@page import="hotel_booking.dto.QuestionDTO"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html>

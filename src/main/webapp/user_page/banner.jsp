@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="elementary_web.dto.NotificationDTO"%>
+<%@page import="hotel_booking.dto.NotificationDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -47,72 +47,23 @@
 <link href="user_page/css/header.css" rel="stylesheet">
 
 <style>
-.my-custom-scrollbar {
-	position: relative;
-	height: 200px;
-	overflow: auto;
-	background-image:
-		url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTus_gWso6gF6nj8_d9LncWXFphmHgbK4Ad4A&usqp=CAU');
-	background: rgb(255, 214, 195);
-	margin-bottom: 30px;
-}
-
-.table-wrapper-scroll-y {
-	display: block;
-}
-
-.graycolor {
-	color: graytext;
-}
 </style>
 </head>
 <body>
-	<!-- Banner Start -->
+
+	<!-- Banner Start-->
 	<div class="container-fluid bg-primary px-0 px-md-5 mb-5 notification">
 		<div class="row align-items-center px-3">
 			<div class="col-lg-6 text-center text-lg-left notification-content">
-				<h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
-				<h1 class="display-3 font-weight-bold text-white">New Approach
-					to Kids Education</h1>
-				<p class="text-white mb-4">Sea ipsum kasd eirmod kasd magna, est
-					sea et diam ipsum est amet sed sit. Ipsum dolor no justo dolor et,
-					lorem ut dolor erat dolore sed ipsum at ipsum nonumy amet. Clita
-					lorem dolore sed stet et est justo dolore.</p>
-				<h3>Thông báo</h3>
+				<h4 class="text-white mb-4 mt-5 mt-lg-0">Website học tập online</h4>
+				<h1 class="display-3 font-weight-bold text-white">Tiếp cận học tập dễ
+					dàng hơn trong mùa dịch. Các bạn nhớ thực hiện 5k nhé.</h1>
+				<p class="text-white mb-4">Trang web giúp liên kết giữa học sinh
+					và giáo viên trong mùa dịch, giúp học sinh có thể đễ dàng tìm được
+					môn học cũng cố kiến thức cũng như thu thập nhiều kiến thức hơn.
+					Mong mọi người có những trải nghiệm tốt nhất. Xin cảm ơn.</p>
 
-				<div class="table-wrapper-scroll-y my-custom-scrollbar">
-					<table class="table table-bordered table-striped mb-0">
-						<%
-						List<NotificationDTO> notesDTOList = (ArrayList<NotificationDTO>) request.getAttribute("notesDTOList");
-						%>
-
-						<thead>
-							<tr>
-								<th scope="col">Tiêu đề</th>
-								<th scope="col">Ngày đăng</th>
-
-
-							</tr>
-						</thead>
-						<%
-						for (NotificationDTO note : notesDTOList) {
-						%>
-						<tbody>
-							<tr>
-								<td><a href="./notificationPage?notificationID=<%=note.getNotificationID()%>"> <%=note.getTitle()%></a></td>
-								<th scope="row">20/10/2020</th>
-
-
-							</tr>
-						</tbody>
-						<%
-						}
-						%>
-					</table>
-
-				</div>
-
-				<a href="user_page/" class="btn btn-secondary mt-1 py-3 px-5">Learn
+				<a href="#blog" class="btn btn-secondary mt-1 py-3 px-5">Learn
 					More</a>
 
 			</div>
@@ -131,7 +82,7 @@
 					sea et diam ipsum est amet sed sit. Ipsum dolor no justo dolor et,
 					lorem ut dolor erat dolore sed ipsum at ipsum nonumy amet. Clita
 					lorem dolore sed stet et est justo dolore.</p>
-				<a href="user_page/" class="btn btn-secondary mt-1 py-3 px-5">Learn
+				<a href="#blog" class="btn btn-secondary mt-1 py-3 px-5">Learn
 					More</a>
 			</div>
 			<div class="col-lg-6 text-center text-lg-right notification-image">
@@ -147,7 +98,7 @@
 					sea et diam ipsum est amet sed sit. Ipsum dolor no justo dolor et,
 					lorem ut dolor erat dolore sed ipsum at ipsum nonumy amet. Clita
 					lorem dolore sed stet et est justo dolore.</p>
-				<a href="user_page/" class="btn btn-secondary mt-1 py-3 px-5">Learn
+				<a href="#blog" class="btn btn-secondary mt-1 py-3 px-5">Learn
 					More</a>
 			</div>
 			<div class="col-lg-6 text-center text-lg-right notification-image">
