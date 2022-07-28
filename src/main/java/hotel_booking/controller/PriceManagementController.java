@@ -9,22 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import hotel_booking.dto.ChapterDTO;
-import hotel_booking.dto.LessonDTO;
-import hotel_booking.dto.QuestionDTO;
-import hotel_booking.service.ChapterService;
-import hotel_booking.service.LessonService;
-import hotel_booking.service.QuestionService;
+import hotel_booking.dto.RoomDTO;
+import hotel_booking.dto.PriceDTO;
+import hotel_booking.service.RoomService;
+import hotel_booking.service.PriceService;
 
 @Controller
 @RequestMapping("/admin")
-public class LessonManagementController {
+public class PriceManagementController {
 	@Autowired
-	LessonService lessonService;
+	PriceService lessonService;
 	@Autowired
-	ChapterService chapterService;
-	@Autowired
-	QuestionService questionService;
+	RoomService chapterService;
 
 //	@RequestMapping("/lessonManagement")
 //	public ModelAndView lessonManagementPage(@RequestParam int chapterID) {

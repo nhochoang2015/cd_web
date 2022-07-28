@@ -16,7 +16,7 @@
 			<li class="breadcrumb-item active" aria-current="page">Home</li>
 		</ol>
 	</nav>
-	<%@include file="blog.jsp"%>
+
 	<div class="container-fluid pt-5" id="blog">
 		<div class="container">
 			<div class="text-center pb-2">
@@ -26,8 +26,8 @@
 
 				<h1 class="mb-4">Danh sách khách sạn</h1>
 				<nav class="navbar navbar-light bg-light">
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target=".bd-example-modal-lg">Large modal</button>
+					<button type="button" class="btn btn-primary float-right" data-toggle="modal"
+						data-target=".bd-example-modal-lg">Hiển thị ví trí trên bản đồ</button>
 
 					<div class="modal fade bd-example-modal-lg" tabindex="-1"
 						role="dialog" aria-labelledby="myLargeModalLabel"
@@ -74,7 +74,31 @@
 					</div>
 
 				</div>
-				<div class="card col-sm-8" style="width: 30rem;">
+				<div class="card col-sm-8 float-right" style="width: 30rem;">
+					<div class="row">
+						<img src="user_page/img/header.png" alt="..."
+							class="img-thumbnail col"
+							style="max-width: 250px; max-height: 250px; margin-top: 10px; margin-left: 10px">
+						<div class="col">
+							<a style="font-size: 20px" href="#">Khách sạn Melody</a>
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build on the
+								card title and make up the bulk of the card's content.</p>
+							<a href="#" class="btn btn-primary">Chi tiết khách sạn</a>
+						</div>
+					</div>
+					<div class="row">
+						<img src="user_page/img/header.png" alt="..."
+							class="img-thumbnail col"
+							style="max-width: 250px; max-height: 250px; margin-top: 10px; margin-left: 10px">
+						<div class="col">
+							<a style="font-size: 20px" href="#">Khách sạn Melody</a>
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build on the
+								card title and make up the bulk of the card's content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
 					<div class="row">
 						<img src="user_page/img/header.png" alt="..."
 							class="img-thumbnail col"

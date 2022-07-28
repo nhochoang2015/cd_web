@@ -29,12 +29,12 @@ public class Account {
 	@Column(name = "HOAT_DONG")
 	private boolean active;
 	@OneToMany(mappedBy ="account",fetch = FetchType.EAGER)
-	private List<Subject> subject;
+	private List<Location> location;
 	@ManyToOne
 	@JoinColumn(name = "MA_VAI_TRO", nullable = false)
 	private Role role;
 	@OneToMany(mappedBy = "account")
-	List<SubjectRegister> subjectRegisters;
+	List<RoomRegister> roomtRegisters;
 	
 	
 	
@@ -42,8 +42,8 @@ public class Account {
 
 
 	public Account(int accountID, String accountName, String nickName, String password, String email,
-			String phoneNumber, int validateCode, boolean active, List<Subject> subject, Role role,
-			Subject subjectby) {
+			String phoneNumber, int validateCode, boolean active, List<Location> location, Role role,
+			Hotel subjectby) {
 		super();
 		this.accountID = accountID;
 		this.accountName = accountName;
@@ -53,7 +53,6 @@ public class Account {
 		this.phoneNumber = phoneNumber;
 		this.validateCode = validateCode;
 		this.active = active;
-		this.subject = subject;
 		this.role = role;
 	}
 	
@@ -134,13 +133,23 @@ public class Account {
 		this.active = active;
 	}
 
-	public List<Subject> getSubject() {
-		return subject;
+	public List<Location> getLocation() {
+		return location;
 	}
 
-	public void setSubject(List<Subject> subject) {
-		this.subject = subject;
+	public void setLocation(List<Location> location) {
+		this.location = location;
 	}
+
+	public List<RoomRegister> getRoomtRegisters() {
+		return roomtRegisters;
+	}
+
+	public void setRoomtRegisters(List<RoomRegister> roomtRegisters) {
+		this.roomtRegisters = roomtRegisters;
+	}
+
+
 
 	
 

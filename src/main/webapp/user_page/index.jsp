@@ -17,7 +17,6 @@
 			<li class="breadcrumb-item active" aria-current="page">Home</li>
 		</ol>
 	</nav>
-	<%@include file="blog.jsp"%>
 	<div class="container-fluid pt-5" id="blog">
 		<div class="container">
 			<div class="text-center pb-2">
@@ -25,7 +24,9 @@
 					<span class="px-2">Trang chủ</span>
 				</p>
 				<%
-				List<SubjectDTO> subjectList = (ArrayList<SubjectDTO>) request.getAttribute("subjectList");
+				
+
+						List<HotelDTO> subjectList = (ArrayList<HotelDTO>) request.getAttribute("subjectList");
 				%>
 
 				<h1 class="mb-4">Tìm kiếm khách sạn bạn cần tìm</h1>
@@ -33,8 +34,8 @@
 					<span>Nhập tên khách sạn hoặc vị trí thành phố bạn muốn đến:</span>
 					<form class="form-inline">
 
-						<input class="form-control" type="search" style="width: 500px"
-							placeholder="Search" aria-label="Search">
+						<input class="form-control" type="search" style="width: 500px; margin-right: 20px"
+							placeholder="Search" aria-label="Search" required="required">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</nav>

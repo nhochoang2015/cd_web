@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import hotel_booking.dto.AccountDTO;
-import hotel_booking.dto.SubjectDTO;
+import hotel_booking.dto.HotelDTO;
+import hotel_booking.dto.LocationDTO;
 import hotel_booking.entity.Account;
 import hotel_booking.entity.Role;
-import hotel_booking.entity.Subject;
+import hotel_booking.entity.Hotel;
+import hotel_booking.entity.Location;
 import hotel_booking.service.RoleService;
 
 @Component
@@ -29,12 +31,12 @@ public class AccountConverter {
 		int validateCode = entity.getValidateCode();
 		String roleName = entity.getRole().getRoleName();
 		boolean active = entity.isActive();
-		List<Subject> subjects = entity.getSubject();
-		List<SubjectDTO> subjectDTOList = new ArrayList<SubjectDTO>();
-		for(Subject subject : subjects) {
-			subjectDTOList.add(SubjectConverter.toDTO(subject));
+		List<Location> locationList = entity.getLocation();
+		List<LocationDTO> locationDTOList = new ArrayList<LocationDTO>();
+		for(Location location : locationList) {
+			locationDTOList.add(LocationConverter.toDTO(location));
 		}
-		AccountDTO dto = new AccountDTO(accountID, accountName, nickName, password, email, phoneNumber,validateCode, roleName, active,subjectDTOList);
+		AccountDTO dto = new AccountDTO(accountID, accountName, nickName, password, email, phoneNumber,validateCode, roleName, active,locationDTOList);
 		return dto;
 	}
 

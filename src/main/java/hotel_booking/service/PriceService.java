@@ -6,18 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hotel_booking.converter.LessonConverter;
-import hotel_booking.dto.LessonDTO;
-import hotel_booking.entity.Lesson;
+import hotel_booking.converter.PriceConverter;
+import hotel_booking.dto.PriceDTO;
+import hotel_booking.entity.Price;
 import hotel_booking.repository.LessonRepository;
 
 @Service
-public class LessonService {
+public class PriceService {
 
 	@Autowired
 	LessonRepository lessonRepository;
 	@Autowired
-	LessonConverter lessonConverter;
+	PriceConverter lessonConverter;
 
 //	public LessonDTO findByLessonID(int lessonID) {
 //		Lesson lesson = lessonRepository.findByLessonID(lessonID);

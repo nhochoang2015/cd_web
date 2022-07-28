@@ -21,38 +21,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import hotel_booking.dto.AccountDTO;
-import hotel_booking.dto.ChapterDTO;
-import hotel_booking.dto.LessonCompleteDTO;
-import hotel_booking.dto.LessonDTO;
+import hotel_booking.dto.RoomDTO;
+import hotel_booking.dto.PriceDTO;
 import hotel_booking.dto.NotificationDTO;
-import hotel_booking.dto.QuestionDTO;
-import hotel_booking.dto.SubjectDTO;
+import hotel_booking.dto.HotelDTO;
 import hotel_booking.entity.Account;
-import hotel_booking.entity.Subject;
+import hotel_booking.entity.Hotel;
 import hotel_booking.sendmail.EmailSendService;
 import hotel_booking.service.AccountService;
-import hotel_booking.service.ChapterService;
-import hotel_booking.service.LessonCompleteService;
-import hotel_booking.service.LessonService;
+import hotel_booking.service.RoomService;
+import hotel_booking.service.PriceService;
 import hotel_booking.service.NotificationService;
-import hotel_booking.service.RankingService;
-import hotel_booking.service.SubjectService;
-import hotel_booking.service.TestService;
+import hotel_booking.service.HotelService;
 
 @Controller
 public class UserController {
 	@Autowired
-	private SubjectService subjectService;
+	private HotelService subjectService;
 	@Autowired
-	private LessonCompleteService lessonCompleteService;
+	private PriceService lessonService;
 	@Autowired
-	private RankingService rankingService;
-	@Autowired
-	private LessonService lessonService;
-	@Autowired
-	private TestService testService;
-	@Autowired
-	private ChapterService chapterService;
+	private RoomService chapterService;
 	@Autowired
 	private NotificationService notificationService;
 	@Autowired
@@ -65,11 +54,11 @@ public class UserController {
 	@RequestMapping("/")
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("user_page/index");
-		List<SubjectDTO> subjectList = subjectService.findAllSubjectwithActiveTrue();
+		List<HotelDTO> subjectList = subjectService.findAllSubjectwithActiveTrue();
 		mav.addObject("subjectList", subjectList);
+		System.out.println("TESTTTTT");
 		return mav;
 	}
-
 	@RequestMapping("/account")
 	public ModelAndView accountPage(@RequestParam int accountID) {
 		ModelAndView mav = new ModelAndView("/user_page/AccountManagement");
@@ -122,21 +111,21 @@ public class UserController {
 		return "./";
 	}
 
-	@PostMapping("/create-newSubject")
-	public String createNewSubject(HttpSession session, @RequestParam String subjectName, @RequestParam String comment,
-			@RequestParam int studentCount, @RequestParam String weekday, @RequestParam String time,
-			@RequestParam int price) {
-		AccountDTO account = (AccountDTO) session.getAttribute("account");
-		int accountID = account.getAccountID();
-		subjectService.createSubjectByAccountID(subjectName, studentCount, weekday, time, price, comment, accountID);
-		return "./user_page/createSubject";
-	}
+//	@PostMapping("/create-newSubject")
+//	public String createNewSubject(HttpSession session, @RequestParam String subjectName, @RequestParam String comment,
+//			@RequestParam int studentCount, @RequestParam String weekday, @RequestParam String time,
+//			@RequestParam int price) {
+//		AccountDTO account = (AccountDTO) session.getAttribute("account");
+//		int accountID = account.getAccountID();
+//		subjectService.createSubjectByAccountID(subjectName, studentCount, weekday, time, price, comment, accountID);
+//		return "./user_page/createSubject";
+//	}
 
 	@RequestMapping("/subject-management")
 	public ModelAndView subjectPage(HttpSession session) {
 		AccountDTO account = (AccountDTO) session.getAttribute("account");
 		int accountID = account.getAccountID();
-		List<SubjectDTO> subjectList = subjectService.findAllSubjectbyAccountID(accountID);
+		List<HotelDTO> subjectList = subjectService.findAllSubjectbyAccountID(accountID);
 		ModelAndView mav = new ModelAndView("./user_page/subjectManagement");
 		mav.addObject("subjectList", subjectList);
 		return mav;
@@ -157,7 +146,7 @@ public class UserController {
 
 	@GetMapping("/subject-details")
 	public ModelAndView subjetDetailPage(@RequestParam int subjectID) {
-		SubjectDTO subject = subjectService.findBySubjectID(subjectID);
+		HotelDTO subject = subjectService.findBySubjectID(subjectID);
 		ModelAndView mav = new ModelAndView("./user_page/subject-details");
 		mav.addObject("subject", subject);
 		return mav;

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="hotel_booking.dto.SubjectDTO"%>
+<%@page import="hotel_booking.dto.HotelDTO"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,9 +49,11 @@
 				</tr>
 			</thead>
 			<%
-			List<SubjectDTO> subjectList = (ArrayList<SubjectDTO>) request.getAttribute("subjectList");
-			if (subjectList != null) {
-				for (SubjectDTO subject : subjectList) {
+			
+
+				List<HotelDTO> subjectList = (ArrayList<HotelDTO>) request.getAttribute("subjectList");
+				if (subjectList != null) {
+					for (HotelDTO subject : subjectList) {
 			%>
 			<tbody>
 				<tr>

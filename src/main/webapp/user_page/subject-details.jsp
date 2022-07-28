@@ -1,4 +1,4 @@
-<%@page import="hotel_booking.dto.SubjectDTO"%>
+<%@page import="hotel_booking.dto.HotelDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -25,7 +25,9 @@
 			aria-selected="true">Thông tin</a></li>
 	</ul>
 	<%
-	SubjectDTO subjectDTO = (SubjectDTO) request.getAttribute("subject");
+	
+
+		HotelDTO subjectDTO = (HotelDTO) request.getAttribute("subject");
 	%>
 	<div class="tab-pane fade show active" id="home" role="tabpanel"
 		aria-labelledby="profile-tab">

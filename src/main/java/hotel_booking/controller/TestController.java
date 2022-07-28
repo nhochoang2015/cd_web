@@ -13,21 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hotel_booking.dto.AccountDTO;
-import hotel_booking.dto.ChapterDTO;
-import hotel_booking.dto.LessonDTO;
-import hotel_booking.dto.QuestionDTO;
+import hotel_booking.dto.RoomDTO;
+import hotel_booking.dto.PriceDTO;
 import hotel_booking.service.AccountService;
-import hotel_booking.service.ChapterService;
-import hotel_booking.service.QuestionService;
+import hotel_booking.service.RoomService;
 
 @Controller
 public class TestController {
-	@Autowired
-	QuestionService questionService;
+
 	@Autowired
 	AccountService accountService;
 	@Autowired
-	ChapterService chapterService;
+	RoomService chapterService;
 //	@PostMapping("/checkTestAnswer")
 //	public @ResponseBody String checkAnswer(HttpSession session, @RequestParam int questionID,
 //			@RequestParam int userAnswer) {

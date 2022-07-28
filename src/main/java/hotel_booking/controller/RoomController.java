@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import hotel_booking.dto.ChapterDTO;
-import hotel_booking.dto.SubjectDTO;
-import hotel_booking.service.ChapterService;
-import hotel_booking.service.SubjectService;
+import hotel_booking.dto.RoomDTO;
+import hotel_booking.dto.HotelDTO;
+import hotel_booking.service.RoomService;
+import hotel_booking.service.HotelService;
 
 @Controller
 @RequestMapping("/admin")
-public class ChapterController {
+public class RoomController {
 	@Autowired
-	private ChapterService chapterService;
+	private RoomService chapterService;
 	@Autowired
-	private SubjectService subjectService;
+	private HotelService subjectService;
 	
 //	@RequestMapping("/chapter")
 //	public ModelAndView chapterPage(@RequestParam int subjectID) {

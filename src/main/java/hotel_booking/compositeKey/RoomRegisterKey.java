@@ -6,20 +6,20 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class AccountSubjectKey implements Serializable{
+public class RoomRegisterKey implements Serializable{
 @Column(name="MA_TAI_KHOAN")
 int accountID;
 
-@Column(name="MA_MON_HOC")
-int subjectID;
+@Column(name="MA_PHONG")
+int roomID;
 
-public AccountSubjectKey(int accountID, int subjectID) {
+public RoomRegisterKey(int accountID, int roomID) {
 	super();
 	this.accountID = accountID;
-	this.subjectID = subjectID;
+	this.roomID = roomID;
 }
 
-public AccountSubjectKey() {
+public RoomRegisterKey() {
 	super();
 }
 

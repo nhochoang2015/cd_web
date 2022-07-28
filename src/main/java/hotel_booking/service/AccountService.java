@@ -12,10 +12,10 @@ import hotel_booking.converter.AccountConverter;
 import hotel_booking.dto.AccountDTO;
 import hotel_booking.entity.Account;
 import hotel_booking.entity.Role;
-import hotel_booking.entity.Subject;
+import hotel_booking.entity.Hotel;
 import hotel_booking.repository.AccountRepository;
 import hotel_booking.repository.RoleRepository;
-import hotel_booking.repository.SubjectRepository;
+import hotel_booking.repository.HotelRepository;
 import net.bytebuddy.utility.RandomString;
 
 @Service
@@ -27,7 +27,7 @@ public class AccountService {
 	@Autowired
 	private RoleRepository repository;
 	@Autowired
-	private SubjectRepository subjectRepository;
+	private HotelRepository subjectRepository;
 	
 	
 	// Dùng để thêm hoặc sửa thông tin tài khoản. Dùng cho quản lý tài khoản

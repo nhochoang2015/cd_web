@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@page import="hotel_booking.dto.LessonDTO"%>
+<%@page import="hotel_booking.dto.PriceDTO"%>
 <%@page import="hotel_booking.dto.QuestionDTO"%>
 
 <!DOCTYPE html>
@@ -18,11 +18,11 @@
 				<div class="hard"></div>
 				<%
 				String lessonString = "lesson" + request.getAttribute("lessonID");
-				int subjectID = (int) request.getAttribute("subjectID");
-				LessonDTO lesson = (LessonDTO) session.getAttribute(lessonString);
-				ArrayList<QuestionDTO> questionList = (ArrayList<QuestionDTO>) lesson.getQuestionList();
-				int index = 1;
-				for (QuestionDTO question : questionList) {
+						int subjectID = (int) request.getAttribute("subjectID");
+						PriceDTO lesson = (PriceDTO) session.getAttribute(lessonString);
+						ArrayList<QuestionDTO> questionList = (ArrayList<QuestionDTO>) lesson.getQuestionList();
+						int index = 1;
+						for (QuestionDTO question : questionList) {
 				%>
 				<div class="page question">
 					<div class="col-lg-12 question-container">

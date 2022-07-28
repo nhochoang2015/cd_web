@@ -19,11 +19,11 @@ public class AccountDTO implements UserDetails {
 	private int validateCode;
 	private String roleName;
 	private boolean active;
-	private List<SubjectDTO> subjectList;
+	private List<LocationDTO> locationList;
 
 	
 	public AccountDTO(int accountID, String accountName, String nickName, String password, String email,
-			String phoneNumber, int validateCode, String roleName, boolean active, List<SubjectDTO> subjectList) {
+			String phoneNumber, int validateCode, String roleName, boolean active, List<LocationDTO> locationList) {
 		super();
 		this.accountID = accountID;
 		this.accountName = accountName;
@@ -34,7 +34,7 @@ public class AccountDTO implements UserDetails {
 		this.validateCode = validateCode;
 		this.roleName = roleName;
 		this.active = active;
-		this.subjectList = subjectList;
+		this.locationList = locationList;
 	}
 
 	public AccountDTO(String accountName, String nickName, String password, String email, String phoneNumber,
@@ -50,12 +50,14 @@ public class AccountDTO implements UserDetails {
 	}
 	
 
-	public List<SubjectDTO> getSubjectList() {
-		return subjectList;
+	
+
+	public List<LocationDTO> getLocationList() {
+		return locationList;
 	}
 
-	public void setSubjectList(List<SubjectDTO> subjectList) {
-		this.subjectList = subjectList;
+	public void setLocationList(List<LocationDTO> locationList) {
+		this.locationList = locationList;
 	}
 
 	public void setValidateCode(int validateCode) {

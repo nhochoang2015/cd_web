@@ -6,28 +6,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hotel_booking.converter.ChapterConverter;
-import hotel_booking.dto.ChapterDTO;
-import hotel_booking.dto.LessonDTO;
-import hotel_booking.dto.SubjectDTO;
-import hotel_booking.entity.Chapter;
-import hotel_booking.entity.Subject;
-import hotel_booking.repository.ChapterRepository;
-import hotel_booking.repository.SubjectRepository;
+import hotel_booking.converter.RoomConverter;
+import hotel_booking.dto.RoomDTO;
+import hotel_booking.dto.PriceDTO;
+import hotel_booking.dto.HotelDTO;
+import hotel_booking.entity.Room;
+import hotel_booking.entity.Hotel;
+import hotel_booking.repository.RoomRepository;
+import hotel_booking.repository.HotelRepository;
 
 @Service
-public class ChapterService {
+public class RoomService {
 
 	@Autowired
-	private ChapterRepository chapterRepository;
+	private RoomRepository roomRepository;
 	@Autowired
-	private SubjectService subjectService;
+	private HotelService subjectService;
 	@Autowired
-	private ChapterConverter chapterConverter;
+	private RoomConverter chapterConverter;
 	@Autowired
-	private SubjectRepository subjectRepository;
-	List<ChapterDTO> chapters = new ArrayList<ChapterDTO>();
+	private HotelRepository subjectRepository;
+	List<RoomDTO> chapters = new ArrayList<RoomDTO>();
 
+	public Room findEntityByRoomID(int roomID) {
+		Room room = roomRepository.findByRoomID(roomID);
+		return room;
+	}
+	
+	
+	
 //xóa chương
 //	public void deleteChapterbyID(int chapterID) {
 //		Chapter chapter = chapterRepository.findByChapterID(chapterID);

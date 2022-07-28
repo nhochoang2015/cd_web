@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="hotel_booking.dto.AccountDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="hotel_booking.dto.SubjectDTO"%>
+<%@page import="hotel_booking.dto.HotelDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
