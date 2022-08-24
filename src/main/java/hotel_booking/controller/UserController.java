@@ -2,6 +2,7 @@ package hotel_booking.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -11,13 +12,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import hotel_booking.dto.AccountDTO;
@@ -25,6 +30,7 @@ import hotel_booking.dto.RoomDTO;
 import hotel_booking.dto.PriceDTO;
 import hotel_booking.dto.NotificationDTO;
 import hotel_booking.dto.HotelDTO;
+import hotel_booking.dto.LocationDTO;
 import hotel_booking.entity.Account;
 import hotel_booking.entity.Hotel;
 import hotel_booking.sendmail.EmailSendService;
@@ -33,6 +39,7 @@ import hotel_booking.service.RoomService;
 import hotel_booking.service.PriceService;
 import hotel_booking.service.NotificationService;
 import hotel_booking.service.HotelService;
+import hotel_booking.service.LocationService;
 
 @Controller
 public class UserController {
@@ -50,15 +57,33 @@ public class UserController {
 	private AccountService accountService;
 	@Autowired
 	private AccountController accountController;
+	@Autowired
+	private LocationService locationService;
 
 	@RequestMapping("/")
-	public ModelAndView homePage() {
+	public ModelAndView homePage(@RequestParam(name = "locationName", required = false) String locationName) {
 		ModelAndView mav = new ModelAndView("user_page/index");
-		List<HotelDTO> subjectList = subjectService.findAllSubjectwithActiveTrue();
-		mav.addObject("subjectList", subjectList);
-		System.out.println("TESTTTTT");
+		List<LocationDTO> locationDTOList = new ArrayList<LocationDTO>();
+		if (StringUtils.hasText(locationName)) {
+			 locationDTOList = locationService.findAllByLocationName(locationName);
+		} else  {
+			 locationDTOList = locationService.findAllLocation();
+		}
+		mav.addObject("locationDTOList", locationDTOList);
 		return mav;
 	}
+	@RequestMapping("/searchLocation")
+	public @ResponseBody List<LocationDTO> searchLocation(@RequestParam(name = "locationName", required = false) String locationName) {
+		List<LocationDTO> locationDTOList = new ArrayList<LocationDTO>();
+		if (StringUtils.hasText(locationName)) {
+			 locationDTOList = locationService.findAllByLocationName(locationName);
+		} else  {
+			 locationDTOList = locationService.findAllLocation();
+			
+		}
+		return locationDTOList;
+	}
+	
 	@RequestMapping("/account")
 	public ModelAndView accountPage(@RequestParam int accountID) {
 		ModelAndView mav = new ModelAndView("/user_page/AccountManagement");
@@ -121,15 +146,15 @@ public class UserController {
 //		return "./user_page/createSubject";
 //	}
 
-	@RequestMapping("/subject-management")
-	public ModelAndView subjectPage(HttpSession session) {
-		AccountDTO account = (AccountDTO) session.getAttribute("account");
-		int accountID = account.getAccountID();
-		List<HotelDTO> subjectList = subjectService.findAllSubjectbyAccountID(accountID);
-		ModelAndView mav = new ModelAndView("./user_page/subjectManagement");
-		mav.addObject("subjectList", subjectList);
-		return mav;
-	}
+//	@RequestMapping("/subject-management")
+//	public ModelAndView subjectPage(HttpSession session) {
+//		AccountDTO account = (AccountDTO) session.getAttribute("account");
+//		int accountID = account.getAccountID();
+//		List<HotelDTO> subjectList = subjectService.findAllSubjectbyAccountID(accountID);
+//		ModelAndView mav = new ModelAndView("./user_page/subjectManagement");
+//		mav.addObject("subjectList", subjectList);
+//		return mav;
+//	}
 
 	@GetMapping("/about")
 	public String aboutPage(Model model) {
@@ -144,13 +169,13 @@ public class UserController {
 		return mav;
 	}
 
-	@GetMapping("/subject-details")
-	public ModelAndView subjetDetailPage(@RequestParam int subjectID) {
-		HotelDTO subject = subjectService.findBySubjectID(subjectID);
-		ModelAndView mav = new ModelAndView("./user_page/subject-details");
-		mav.addObject("subject", subject);
-		return mav;
-	}
+//	@GetMapping("/subject-details")
+//	public ModelAndView subjetDetailPage(@RequestParam int subjectID) {
+//		HotelDTO subject = subjectService.findBySubjectID(subjectID);
+//		ModelAndView mav = new ModelAndView("./user_page/subject-details");
+//		mav.addObject("subject", subject);
+//		return mav;
+//	}
 
 	@GetMapping("/class")
 	public String classPage(Model model) {
@@ -256,10 +281,11 @@ public class UserController {
 		return "./user_page/mission";
 	}
 
-	@GetMapping("/search")
-	public String searchPage(Model model) {
-		return "./user_page/search";
-	}
+//	@GetMapping("/search")
+//	public String searchPage(Model model) {
+//		return "./user_page/search";
+//		Vậy là đúng rồi. Request của ông được chuyển đến cái này nên code ông đúng nó cũng không in ra gì
+//	}
 
 	@GetMapping("/personal")
 	public String personalInformationManagement(Model model) {

@@ -21,11 +21,11 @@
 		<li class="nav-item"><a class="nav-link" id="profile-tab"
 			data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
 			aria-selected="false">Đổi mật khẩu</a></li>
-		<%if(accountDTO.getRoleName().equals("HOC_SINH")){ %>
+		
 		<li class="nav-item"><a class="nav-link" id="contact-tab"
 			data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-			aria-selected="false">Môn học đã đăng ký</a></li>
-			<%} %>
+			aria-selected="false">Phòng đã đăng ký</a></li>
+		
 	</ul>
 	<%AccountDTO account =(AccountDTO) request.getAttribute("account"); %>
 	<div class="tab-content" id="myTabContent">
@@ -107,7 +107,7 @@
 
 		</div>
 		<div class="tab-pane fade" id="contact" role="tabpanel"
-			aria-labelledby="contact-tab">Hiện chưa đăng ký môn học nào.</div>
+			aria-labelledby="contact-tab">Hiện chưa đăng ký phòng nào</div>
 	</div>
 
 

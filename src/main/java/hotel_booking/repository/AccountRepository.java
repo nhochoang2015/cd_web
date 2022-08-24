@@ -11,6 +11,9 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 	@Query(value = "SELECT * FROM TAI_KHOAN WHERE ((EMAIL = ?1) OR (TEN_TAI_KHOAN = ?1) OR (SDT = ?1)) AND HOAT_DONG = 1", nativeQuery = true)
 	Account findByEmailOrUsernameOrPhoneNumber(String emailOrUserOrPhoneNumber);
 
+	@Query(value = "SELECT * FROM TAI_KHOAN WHERE (TEN_TAI_KHOAN = ?1) AND HOAT_DONG = 1", nativeQuery = true)
+	Account findByUsername(String username);
+	
 	@Query(value = "SELECT * FROM TAI_KHOAN WHERE (MA_TAI_KHOAN = ?1) ",nativeQuery = true)
 	Account findByAccountID(int accountID);
 	@Query(value = "SELECT * FROM TAI_KHOAN WHERE ((EMAIL = ?1) OR (TEN_TAI_KHOAN = ?1) OR (SDT = ?1)) OR(NICK_NAME = ?1)",nativeQuery = true)

@@ -15,9 +15,9 @@
 					class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
 					style="font-size: 40px; line-height: 40px;"> <i
 					class="fa-solid fa-book-open" id="user-icon"></i> <span
-					class="text-white">KidKinder</span>
+					class="text-white">Hotels-Booking</span>
 				</a>
-				<p>Website được tạo ra với mục đích tạo ra một môi trường có thể giúp học sinh thoải mái học tập theo cách mình muốn và tiến độ riêng của mình.</p>
+				<p>Website được tạo ra với mục đích tạo ra một môi trường có thể giúp khách hàng tìm khách sạn mà mình mong muốn.</p>
 				<div class="d-flex justify-content-start mt-4">
 					<a
 						class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
@@ -122,6 +122,7 @@
 	<script src="user_page/mail/contact.js"></script>
 
 	<!-- Template Javascript -->
+	<script src="user_page/js/test.js"></script>
 	<script src="user_page/js/main.js"></script>
 	<script src="user_page/js/header.js"></script>
 	<script type="text/javascript" src="user_page/lib/slick/slick.min.js"></script>

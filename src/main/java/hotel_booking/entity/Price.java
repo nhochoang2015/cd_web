@@ -16,7 +16,7 @@ public class Price {
 	private double price;
 	@ManyToOne
 	@JoinColumn(name = "MA_PHONG", nullable = false)
-	private Room room;
+	private Room roomid;
 	
 	
 	public int getPriceID() {
@@ -37,11 +37,11 @@ public class Price {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Room getRoom() {
-		return room;
+	public Room getRoomid() {
+		return roomid;
 	}
-	public void setRoom(Room room) {
-		this.room = room;
+	public void setRoomid(Room roomid) {
+		this.roomid = roomid;
 	}
 	
 	

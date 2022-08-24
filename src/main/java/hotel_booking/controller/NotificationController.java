@@ -20,7 +20,6 @@ public class NotificationController {
 	public ModelAndView subjectPage() {
 		List<NotificationDTO> notesDTOList = notificationService.findAllNotification();
 		ModelAndView mav = new ModelAndView("../admin_page/Notification-list");
-		System.out.println(notesDTOList.size());
 		mav.addObject("notesDTOList", notesDTOList);
 		return mav;
 	}

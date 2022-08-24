@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "KHACH_SAN")
 public class Hotel {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MA_KHACH_SAN")
@@ -29,7 +28,9 @@ public class Hotel {
 	@ManyToOne
 	@JoinColumn(name = "MA_DIA_DIEM", nullable = false)
 	private Location location;
-
+	public Hotel() {
+		
+	}
 	public Hotel(int hotelID, String hotelName, boolean active, String position, String pic, String comment,
 			Set<Room> roomList, Location location) {
 		super();

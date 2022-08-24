@@ -1,6 +1,5 @@
 package hotel_booking.converter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +23,20 @@ public class PriceConverter {
 	 int priceID =entity.getPriceID();
 		 String weekday =entity.getWeekday();
 		 double price =entity.getPrice();
-		 int roomID = entity.getRoom().getRoomID();
+		 int roomID = entity.getRoomid().getRoomID();
 		return new PriceDTO(priceID, weekday, price, roomID);
 	}
 
-	public Price toEntity(PriceDTO dto) {
-		Price price = new Price();
-		price.setPriceID(dto.getPriceID());
-		price.setWeekday(dto.getWeekday());
-		price.setPrice(dto.getPrice());
-		int roomID = dto.getRoomID();
-		Room room = roomService.findEntityByRoomID(roomID);
-		price.setRoom(room);
-		return price;
-	
-	}
+//	public Price toEntity(PriceDTO dto) {
+//		Price price = new Price();
+//		price.setPriceID(dto.getPriceID());
+//		price.setWeekday(dto.getWeekday());
+//		price.setPrice(dto.getPrice());
+//		int roomID = dto.getRoomID();
+//		Room room = roomService.findEntityByRoomID(roomID);
+//		price.setRoomid(room);
+//		return price;
+//	
+//	}
 
 }

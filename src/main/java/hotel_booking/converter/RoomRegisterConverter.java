@@ -26,13 +26,13 @@ public class RoomRegisterConverter {
 		int roomID = entity.getRoom().getRoomID();
 		return new RoomRegisterDTO( accountID,roomID);
 	}
-	public RoomRegister toEntity(RoomRegisterDTO dto) {
-		
-		int accountID = dto.getAccountID();
-		int roomID = dto.getRoomID();
-		RoomRegisterKey id = new RoomRegisterKey(accountID,roomID);
-		Account account = accountService.findByAccountID(accountID);
-		Room room = roomService.findEntityByRoomID(roomID);
-		return new RoomRegister(id, account, room);
-	}
+//	public RoomRegister toEntity(RoomRegisterDTO dto) {
+//		
+//		int accountID = dto.getAccountID();
+//		int roomID = dto.getRoomID();
+//		RoomRegisterKey id = new RoomRegisterKey(accountID,roomID);
+//		Account account = accountService.findByAccountID(accountID);
+//		Room room = roomService.findEntityByRoomID(roomID);
+//		return new RoomRegister(id, account, room);
+//	}
 }

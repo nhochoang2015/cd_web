@@ -27,28 +27,33 @@ public class Room {
 	private String roomName;
 	@Column(name = "HOAT_DONG")
 	private boolean active;
-	@Column(name = "SO_NGAY")
-	private int day;
-	@Column(name = "NGAY_NHAN_PHONG")
-	private Date date;
-	@OneToMany(mappedBy = "chapter", fetch = FetchType.EAGER)
+	@Column(name = "SO_NGUOI")
+	private int person;
+	@Column(name = "TIEN_ICH", columnDefinition = "nvarchar(max)")
+	private String service;
+	@OneToMany(mappedBy = "roomid", fetch = FetchType.EAGER)
 	private Set<Price> priceList;
 	@OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
 	private List<RoomRegister> roomRegisters;
 	@ManyToOne
 	@JoinColumn(name = "MA_KHACH_SAN", nullable = false)
 	private Hotel hotel;
-	public Room(int roomID, String roomName, Hotel hotelID, boolean active, int day, Date date,
-			Set<Price> priceList, List<RoomRegister> roomRegisters, Hotel hotel) {
+	
+	public Room() {
+		
+	}
+	public Room(int roomID, String roomName, Hotel hotelID, boolean active,
+			Set<Price> priceList, List<RoomRegister> roomRegisters, Hotel hotel, int person,String service) {
 		super();
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.active = active;
-		this.day = day;
-		this.date = date;
+		
 		this.priceList = priceList;
 		this.roomRegisters = roomRegisters;
 		this.hotel = hotel;
+		this.person=person;
+		this.service=service;
 	}
 	public int getRoomID() {
 		return roomID;
@@ -62,26 +67,25 @@ public class Room {
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
 	}
-	
-	
+	public String getService() {
+		return service;
+	}
+	public void setService(String service) {
+		this.service = service;
+	}
+	public int getPerson() {
+		return person;
+	}
+	public void setPerson(int person) {
+		this.person = person;
+	}
 	public boolean isActive() {
 		return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public int getDay() {
-		return day;
-	}
-	public void setDay(int day) {
-		this.day = day;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 	public Set<Price> getPriceList() {
 		return priceList;
 	}

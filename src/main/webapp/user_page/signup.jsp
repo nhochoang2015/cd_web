@@ -17,18 +17,18 @@
 		<div class="container-login100"
 			style="background-image: url('images/login.jpg'); padding-top: 90px">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-			<form class="login100-form validate-form" action="./SignUp"
+				<form class="login100-form validate-form" action="./SignUp"
 					method="post">
 					<span class="login100-form-title p-b-49"> Đăng ký </span>
 
 					<div class="wrap-input100 validate-input m-b-23"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
-						<span class="label-input100">Tên Đăng nhập</span> 
-						
-					<input
-							class="input100" type="text" name="Username"
+						<span class="label-input100">Tên Đăng nhập</span> <input
+							class="input100" type="text" name="Username" id="username"
 							placeholder="Nhập tên đăng nhập của bạn"> <span
-							class="focus-input100" data-symbol="&#xf206;"></span>
+							class="focus-input100" data-symbol="&#xf206;" ></span>
+							<p id="checkUsserr"></p>
+
 					</div>
 					<div class="wrap-input100 validate-input m-b-23"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
@@ -40,8 +40,7 @@
 
 					<div class="wrap-input100 validate-input"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
-						<span class="label-input100">Nhập lại mật khẩu</span> 
-						<input
+						<span class="label-input100">Nhập lại mật khẩu</span> <input
 							class="input100" type="password" name="pass" id="pass2"
 							placeholder="Nhập lại mật khẩu" oninput="checkPass()"> <span
 							class="focus-input100" data-symbol="&#xf190;" id="invalidPass"></span>
@@ -60,26 +59,20 @@
 					<p id="invalidPass" style="color: red"></p>
 					<div class="wrap-input100 validate-input m-b-23"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
-						<span class="label-input100">Họ Tên</span>
-						
-						  <input class="input100"
+						<span class="label-input100">Họ Tên</span> <input class="input100"
 							type="text" name="Nickname" placeholder="Nhập nick name của bạn">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 					<div class="wrap-input100 validate-input m-b-23"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
-						<span class="label-input100">Email</span>
-						
-						 <input class="input100"
+						<span class="label-input100">Email</span> <input class="input100"
 							type="email" name="Email" placeholder="Nhập email của bạn">
 						<span class="focus-input100" data-symbol="&#9993;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23"
 						data-validate="KhÃ´ng ÄÆ°á»£c bá» trá»ng">
-						<span class="label-input100">Số điện thoại</span>
-						<form:input path="Phonenumber"/>
-					 <input
+						<span class="label-input100">Số điện thoại</span> <input
 							class="input100" type="tel" name="Phonenumber"
 							placeholder="Nhập số điện thoại của bạn"><span
 							class="focus-input100" data-symbol="&#9742;"></span>

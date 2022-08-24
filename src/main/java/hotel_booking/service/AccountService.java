@@ -45,6 +45,16 @@ public class AccountService {
 		accountRepository.save(account);
 	}
 
+	public boolean checkUserName(String username) {
+		Account account = accountRepository.findByUsername(username);
+		
+		if(account != null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public AccountDTO findAccountByEmailOrUserOrPhoneNumber(String emailOrUserOrPhoneNumber) {
 		Account account = accountRepository.findByEmailOrUsernameOrPhoneNumber(emailOrUserOrPhoneNumber);
 		// Tim thay hay khong

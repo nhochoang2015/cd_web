@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="elementary_web.dto.NotificationDTO"%>
+<%@page import="hotel_booking.dto.NotificationDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 

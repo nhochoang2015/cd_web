@@ -15,18 +15,50 @@ import hotel_booking.entity.Room;
 import hotel_booking.entity.Hotel;
 import hotel_booking.repository.AccountRepository;
 import hotel_booking.repository.HotelRepository;
+import hotel_booking.repository.LocationRepository;
 
 @Service
 public class HotelService {
 	@Autowired
-	private HotelRepository subjectRepository;
+	private HotelRepository hotelRepository;
 	@Autowired
-	private HotelConverter subjectConverter;
+	private HotelConverter hotelConverter;
 	@Autowired
 	private AccountRepository accountRepository;
-	
+	@Autowired
+	private LocationRepository locationRepository;
+
 	List<AccountDTO> accountDTO = new ArrayList<AccountDTO>();
 	List<HotelDTO> subjects = new ArrayList<HotelDTO>();
+
+	public List<HotelDTO> findAllHotelByLocationID(int locationID) {
+		
+		List<Hotel> hotelList = hotelRepository.findAllHotelByLocationID(locationID);
+		
+		List<HotelDTO> hotelDTOtList = new ArrayList<HotelDTO>();
+		for (Hotel hotel : hotelList) {
+				hotelDTOtList.add(hotelConverter.toDTO(hotel));
+		}
+		return hotelDTOtList;
+	}
+	public HotelDTO findHotelByID( int hotelID ) {
+		Hotel hotel = hotelRepository.findByHotelID(hotelID);
+		HotelDTO hotelDTO = hotelConverter.toDTO(hotel);
+		return hotelDTO;
+		
+	}
+	
+	
+	public List<HotelDTO> findAllHotelByLocationName(String locationName) {
+		List<Hotel> hotelList = hotelRepository.findAll();
+		List<HotelDTO> hotelDTOtList = new ArrayList<HotelDTO>();
+		for (Hotel hotel : hotelList) {
+			if (hotel.getLocation().getLocationName() == locationName) {
+				hotelDTOtList.add(hotelConverter.toDTO(hotel));
+			}
+		}
+		return hotelDTOtList;
+	}
 
 	// Xóa môn học
 //	public void deleteSubjectBySubjectID(int subjectID) {
@@ -60,13 +92,13 @@ public class HotelService {
 //		}
 //	}
 	// xóa môn
-	public void deleteSubjectByID(int subjectID) {
-		Hotel subject = subjectRepository.findBySubjectID(subjectID);
-		subject.setActive(false);
-		subjectRepository.save(subject);
-	}
+//	public void deleteSubjectByID(int subjectID) {
+//		Hotel subject = subjectRepository.findBySubjectID(subjectID);
+//		subject.setActive(false);
+//		subjectRepository.save(subject);
+//	}
 //Tạo môn
-	
+
 //	public void createSubjectByAccountID(String subjectName,int studentCount,String weekday,String time,int price,String comment,int accountID) {
 //		Account account = accountRepository.findByAccountID(accountID);
 //		Hotel subject = new Hotel();
@@ -86,7 +118,7 @@ public class HotelService {
 //		subject.setSubjectName(subjectName);
 //		subjectRepository.save(subject);
 //	}
-	// 
+	//
 //	public List<SubjectDTO> findSubbyName(String subjectName) {
 //		List<Subject> subjects = subjectRepository.findSubjectByName(subjectName);
 //		List<SubjectDTO> subjecDTOtList = new ArrayList<SubjectDTO>();
@@ -95,7 +127,7 @@ public class HotelService {
 //		}
 //		return subjecDTOtList;
 //	}
-	//Sửa Số lượng học sinh
+	// Sửa Số lượng học sinh
 //	public void updateStudentCount(int subjectID,int StudentCount) {
 //		Hotel subject = subjectRepository.findBySubjectID(subjectID);
 //		subject.setStudentCount(StudentCount);
@@ -133,8 +165,7 @@ public class HotelService {
 //			subjectRepository.save(subject);
 //		
 //	}
-	
-	
+
 	// sửa tên môn học
 //	public void renameSubject(int subjectID, String newSubjectName) {
 //		Hotel subject = subjectRepository.findBySubjectID(subjectID);
@@ -143,52 +174,52 @@ public class HotelService {
 //	}
 
 	// phục hồi môn
-	public void restoreSubjectByID(int subjectID) {
-		Hotel subject = subjectRepository.findBySubjectID(subjectID);
-		subject.setActive(true);
-		subjectRepository.save(subject);
-	}
-
-	// Tim mon hoc theo ID
-	public HotelDTO findBySubjectID(int subjectID) {
-		Hotel subject = subjectRepository.findBySubjectID(subjectID);
-		return HotelConverter.toDTO(subject);
-	}
-	// tạo môn
-
-//	public void addNewSubject(Subject subject) {
-//		subjectRepository.save(subjectConverter.toDTO(subject));
+//	public void restoreSubjectByID(int subjectID) {
+//		Hotel subject = subjectRepository.findBySubjectID(subjectID);
+//		subject.setActive(true);
+//		subjectRepository.save(subject);
 //	}
-	public List<HotelDTO> findAllSubjectwithActiveTrue() {
-		List<Hotel> subjectList = subjectRepository.findAll();
-		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
-		for (Hotel subject : subjectList) {
-			if (subject.isActive() == true) {
-				subjecDTOtList.add(HotelConverter.toDTO(subject));
-			}
-		}
-		return subjecDTOtList;
-	}
-	public Hotel findSubjectbyID(int subjectID) {
-		Hotel subject = subjectRepository.findBySubjectID(subjectID);
-		return subject;
-	}
-	public List<HotelDTO> findAllSubject() {
-		List<Hotel> subjectList = subjectRepository.findAll();
 
-		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
-		for (Hotel subject : subjectList) {
-			subjecDTOtList.add(HotelConverter.toDTO(subject));
-		}
-		return subjecDTOtList;
-	}
-
-	public List<HotelDTO> findAllSubjectbyAccountID(int account) {
-		List<Hotel> subjectList = subjectRepository.findSubjectByAccountID(account);
-		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
-		for (Hotel subject : subjectList) {
-			subjecDTOtList.add(HotelConverter.toDTO(subject));
-		}
-		return subjecDTOtList;
-	}
+//	// Tim mon hoc theo ID
+//	public HotelDTO findBySubjectID(int subjectID) {
+//		Hotel subject = subjectRepository.findBySubjectID(subjectID);
+//		return HotelConverter.toDTO(subject);
+//	}
+//	// tạo môn
+//
+////	public void addNewSubject(Subject subject) {
+////		subjectRepository.save(subjectConverter.toDTO(subject));
+////	}
+//	public List<HotelDTO> findAllSubjectwithActiveTrue() {
+//		List<Hotel> subjectList = subjectRepository.findAll();
+//		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
+//		for (Hotel subject : subjectList) {
+//			if (subject.isActive() == true) {
+//				subjecDTOtList.add(HotelConverter.toDTO(subject));
+//			}
+//		}
+//		return subjecDTOtList;
+//	}
+//	public Hotel findSubjectbyID(int subjectID) {
+//		Hotel subject = subjectRepository.findBySubjectID(subjectID);
+//		return subject;
+//	}
+//	public List<HotelDTO> findAllSubject() {
+//		List<Hotel> subjectList = subjectRepository.findAll();
+//
+//		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
+//		for (Hotel subject : subjectList) {
+//			subjecDTOtList.add(HotelConverter.toDTO(subject));
+//		}
+//		return subjecDTOtList;
+//	}
+//
+//	public List<HotelDTO> findAllSubjectbyAccountID(int account) {
+//		List<Hotel> subjectList = subjectRepository.findSubjectByAccountID(account);
+//		List<HotelDTO> subjecDTOtList = new ArrayList<HotelDTO>();
+//		for (Hotel subject : subjectList) {
+//			subjecDTOtList.add(HotelConverter.toDTO(subject));
+//		}
+//		return subjecDTOtList;
+//	}
 }

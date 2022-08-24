@@ -1,12 +1,12 @@
 <%@page import="java.util.List"%>
-<%@page import="elementary_web.dto.AccountDTO"%>
-<%@page import="elementary_web.dto.RoleDTO"%>
+<%@page import="hotel_booking.dto.AccountDTO"%>
+<%@page import="hotel_booking.dto.RoleDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
-<title>account_management</title>
+<title></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,32 +46,26 @@
 										<div class="add-product">
 
 											<a data-target="#addAccountModal" data-toggle="modal">Thêm</a>
-
 										</div>
-
 										<thead>
-
 											<tr>
 
+												<th data-field="name" data-editable="true" >[ Tên tài
+													khoản]</th>
 
-												<th data-field="id">ID</th>
+												
 
-												<th data-field="name" data-editable="true">Tên tài
-													khoản</th>
+												<th data-field="email" data-editable="true" >[ Email ]</th>
 
-												<th data-field="tienxu">Active</th>
+												<th data-field="price" data-editable="true">[ Họ tên ]</th>
 
-												<th data-field="email" data-editable="true">Email</th>
-
-												<th data-field="price" data-editable="true">Họ tên</th>
-
-												<th data-field="sdt" data-editable="true">SDT</th>
+												<th data-field="sdt" data-editable="true">[ Số điện thoại ]</th>
+												<th data-field="active">[ Tình trạng ]</th>
 
 
-
-												<th data-field="tichluytuan" data-editable="true">RoleName</th>
-												<th data-field="tichluy" data-editable="true">Khóa tài
-													khoản</th>
+												<th data-field="roleName" data-editable="true">[ Tên quyền hạn ]</th>
+												<th data-field="tichluy" data-editable="true">[ Khóa tài
+													khoản ]</th>
 
 
 
@@ -79,17 +73,18 @@
 										</thead>
 										<tbody>
 											<%
-											List<AccountDTO> listaccountdto = (List<AccountDTO>) request.getAttribute("accountlistdto");
+											List<AccountDTO> listaccountdto = (List<AccountDTO>) request.getAttribute("accountDTOList");
 											for (AccountDTO accountdto : listaccountdto) {
 											%>
 											<tr>
-												
+
 												<td><%=accountdto.getAccountName()%></td>
 												<td><%=accountdto.getEmail()%></td>
 												<td><%=accountdto.getNickName()%></td>
 												<td><%=accountdto.getPhoneNumber()%></td>
+												<td><%=accountdto.isActive()%></td>
 												<td><%=accountdto.getRoleName()%></td>
-												<td></td>
+												<td><a class="btn btn-danger">Khóa</a></td>
 											</tr>
 											<%
 											}

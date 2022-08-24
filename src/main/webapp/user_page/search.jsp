@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="hotel_booking.dto.HotelDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +29,9 @@
 
 				<h1 class="mb-4">Danh sách khách sạn</h1>
 				<nav class="navbar navbar-light bg-light">
-					<button type="button" class="btn btn-primary float-right" data-toggle="modal"
-						data-target=".bd-example-modal-lg">Hiển thị ví trí trên bản đồ</button>
+					<button type="button" class="btn btn-primary float-right"
+						data-toggle="modal" data-target=".bd-example-modal-lg">Hiển
+						thị ví trí trên bản đồ</button>
 
 					<div class="modal fade bd-example-modal-lg" tabindex="-1"
 						role="dialog" aria-labelledby="myLargeModalLabel"
@@ -42,10 +46,10 @@
 								</div>
 								<div class="modal-body">
 									<iframe
-										src="https://www.google.com/maps/d/u/0/embed?mid=1O0bAuF9j6C8hOsrQSaM3qDI81Rs11Xo&ehbc=2E312F"
+										src="https://www.google.com/maps/d/u/0/edit?mid=1O0bAuF9j6C8hOsrQSaM3qDI81Rs11Xo&ll=10.380887391545683%2C107.1132738090149&z=16"
 										width="640" height="480"></iframe>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
@@ -59,58 +63,50 @@
 					<div class="card border-0 shadow-sm mb-2">
 						<img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
 						<div class="card-body bg-light text-center p-4">
-							<h4 class="">kjabfklaaj</h4>
-							<div class="d-flex justify-content-center mb-3">
-								<small class="mr-3"><i class="fa fa-user text-primary"></i>
-									Giáo viên: Thu Minh </small> <small class="mr-3"><i
-									class="fa fa-folder text-primary"></i></small> <small class="mr-3"><i
-									class="fa fa-comments text-primary"></i> 15</small>
-							</div>
-							<p>hìhaioahflafhil</p>
-							<p>HDLFHLAALFA</p>
-							<p>Học phí: CÂ vnđ/ tháng</p>
-							<a class="btn btn-primary px-4 mx-auto my-2">Xem chi tiết</a>
+							<form class="form-inline" action="./">
+
+								<input class="form-control" type="search" name="locationName"
+									id="findlocation" list="locationList"
+									style="width: 500px; margin-right: 20px" placeholder="Search"
+									aria-label="Search" required="required">
+								<datalist id="locationList">
+									<option id="valueLoction" value="">
+								</datalist>
+								<button class="btn btn-outline-success my-2 my-sm-0"
+									type="submit">Search</button>
+							</form>
 						</div>
 					</div>
 
 				</div>
 				<div class="card col-sm-8 float-right" style="width: 30rem;">
+
+					<%
+					List<HotelDTO> hotelDTOList = (ArrayList<HotelDTO>) request.getAttribute("hotelDTOList");
+					if (hotelDTOList != null) {
+						for (HotelDTO hotel : hotelDTOList) {
+					%>
 					<div class="row">
-						<img src="user_page/img/header.png" alt="..."
+						<img src="<%=hotel.getPic()%>" alt="..."
 							class="img-thumbnail col"
 							style="max-width: 250px; max-height: 250px; margin-top: 10px; margin-left: 10px">
 						<div class="col">
-							<a style="font-size: 20px" href="#">Khách sạn Melody</a>
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Chi tiết khách sạn</a>
+							<a style="font-size: 20px" href="#"><%=hotel.getHotelName()%></a>
+							<h5 class="card-title"></h5>
+							<p class="card-text"><%=hotel.getComment()%></p>
+							<a href="./hotel?hotelID=<%=hotel.getHotelID()%>"
+								class="btn btn-primary">Chi tiết khách sạn</a>
 						</div>
 					</div>
-					<div class="row">
-						<img src="user_page/img/header.png" alt="..."
-							class="img-thumbnail col"
-							style="max-width: 250px; max-height: 250px; margin-top: 10px; margin-left: 10px">
-						<div class="col">
-							<a style="font-size: 20px" href="#">Khách sạn Melody</a>
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
-						</div>
-					</div>
-					<div class="row">
-						<img src="user_page/img/header.png" alt="..."
-							class="img-thumbnail col"
-							style="max-width: 250px; max-height: 250px; margin-top: 10px; margin-left: 10px">
-						<div class="col">
-							<a style="font-size: 20px" href="#">Khách sạn Melody</a>
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
-						</div>
-					</div>
+					<%
+					}
+					} else {
+					%>
+					<h5>Không tìm thấy kết quả</h5>
+					<%
+					}
+					%>
+
 				</div>
 				<div class="col-md-12 mb-4">
 					<nav aria-label="Page navigation">

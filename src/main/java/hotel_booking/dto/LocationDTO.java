@@ -4,16 +4,14 @@ import java.util.List;
 
 public class LocationDTO {
 	private int locationID;
-	private int accountID;
 	private String locationName;
 	private String position;
 	private String pic;
 	private List<HotelDTO> hotelList;
-	public LocationDTO(int locationID, int accountID, String locationName, String position, String pic,
+	public LocationDTO(int locationID, String locationName, String position, String pic,
 			List<HotelDTO> hotelList) {
 		super();
 		this.locationID = locationID;
-		this.accountID = accountID;
 		this.locationName = locationName;
 		this.position = position;
 		this.pic = pic;
@@ -24,12 +22,6 @@ public class LocationDTO {
 	}
 	public void setLocationID(int locationID) {
 		this.locationID = locationID;
-	}
-	public int getAccountID() {
-		return accountID;
-	}
-	public void setAccountID(int accountID) {
-		this.accountID = accountID;
 	}
 	public String getLocationName() {
 		return locationName;

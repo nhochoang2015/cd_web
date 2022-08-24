@@ -26,14 +26,14 @@
 							<ul class="submenu-angle" aria-expanded="true">
 
 								<li class="list-group-item"><a title="Quản lý môn học"
-									href="./subject-managenment-admin"><i
+									href="./location-Management"><i
 										class="fa-solid fa-book"></i> <span class="mini-sub-pro">Quản
-											lý môn học</span></a></li>
+											lý địa điểm</span></a></li>
 								<li class="list-group-item"><a title="Quản lý thông báo"
 									href="notification"><i class="fa-solid fa-bell"></i> <span
 										class="mini-sub-pro">Quản lý thông báo</span></a></li>
 								<li class="list-group-item "><a title="Quản lý tài khoản"
-									href="../admin/accountManagement"><i
+									href="./account-Management"><i
 										class="fa-solid fa-users"></i> <span class="mini-sub-pro">Quản
 											lý tài khoản</span></a></li>
 								<li class="list-group-item"><a title="Quản lý vật phẩm"

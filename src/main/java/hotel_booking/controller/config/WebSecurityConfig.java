@@ -26,8 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
 	@Autowired
-	private DataSource dataSource;
-	@Autowired
 	private AuthenticationSuccessHandler authenticationSuccessHandler;
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
@@ -36,20 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//		String userNameQuery = "select EMAIL as username, " + "MAT_KHAU as password, " + "HOAT_DONG as enabled"
-//				+ " from TAI_KHOAN where EMAIL = ?";
-//		String authoritiesQuery = "select EMAIL as username, " + "TEN_VAI_TRO as authority "
-//				+ "from TAI_KHOAN tk JOIN VAI_TRO vt on vt.MA_VAI_TRO = tk.MA_VAI_TRO" + " where EMAIL = ?";
 		auth.userDetailsService(myUserDetailsService);
-//		.dataSource(dataSource)..usersByUsernameQuery(userNameQuery)
-//				.authoritiesByUsernameQuery(authoritiesQuery);
 	}
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers("/admin","/admin/*" ,"/admin_page/**").hasAuthority("ADMIN")
-		.antMatchers("/quiz", "/test").hasAnyAuthority("ADMIN", "USER")
 		.antMatchers("/", "/user_page/**")
 		.permitAll()
 		.and().formLogin().loginPage("/login")

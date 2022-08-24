@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="hotel_booking.dto.LocationDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,63 +26,51 @@
 				<p class="section-title px-5">
 					<span class="px-2">Trang chủ</span>
 				</p>
-				<%
-				
-
-						List<HotelDTO> subjectList = (ArrayList<HotelDTO>) request.getAttribute("subjectList");
-				%>
 
 				<h1 class="mb-4">Tìm kiếm khách sạn bạn cần tìm</h1>
+				<%
+				List<LocationDTO> locationDTOList = (ArrayList<LocationDTO>) request.getAttribute("locationDTOList");
+				%>
 				<nav class="navbar navbar-light bg-light">
-					<span>Nhập tên khách sạn hoặc vị trí thành phố bạn muốn đến:</span>
-					<form class="form-inline">
+					<span>Nhập tên địa điểm bạn muốn đến:</span>
+					<form class="form-inline" action="./">
 
-						<input class="form-control" type="search" style="width: 500px; margin-right: 20px"
-							placeholder="Search" aria-label="Search" required="required">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
+						<input class="form-control" type="search" name="locationName"
+							id="findlocation" list="locationList" 
+							style="width: 500px; margin-right: 20px" placeholder="Search"
+							aria-label="Search" required="required">
+						<datalist id="locationList">
+							<option id= "valueLoction" value="">
+						</datalist>
+						<button class="btn btn-outline-success my-2 my-sm-0"
+									type="submit">Search</button></form>
+							
 				</nav>
 			</div>
+
 			<h1 class="mb-4">Khám phá</h1>
 			<nav class="navbar navbar-light bg-light">
-				<div class="card-deck">
-					<div class="card">
-						<img class="card-img-top" src="user_page/img/header.png" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						</div>
-					</div>
-					<div class="card">
-						<img class="card-img-top" src="user_page/img/header.png" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This card has supporting text below as a
-								natural lead-in to additional content.</p>
-						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						</div>
-					</div>
-					<div class="card">
-						<img class="card-img-top" src="user_page/img/header.png" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This card
-								has even longer content than the first to show that equal height
-								action.</p>
-						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						</div>
+				<%
+				if (locationDTOList != null) {
+					for (LocationDTO location : locationDTOList) {
+				%> 
+				
+				<div id="" class="card " style="width: 18rem; margin-bottom: 20px">
+					<img class="card-img-top" src="<%=location.getPic()%>"
+						alt="Card image cap" style="max-height: 180; max-width: 286">
+					<div class="card-body">
+						<h5 class="card-title">
+							<%=location.getLocationName()%></h5>
+						<a href="./search?locationID=<%=location.getLocationID()%>"
+							class="btn btn-primary">Xem thêm</a>
 					</div>
 				</div>
+
+
+				<%
+				}
+				}
+				%>
 			</nav>
 			<h1 class="mb-4">Khách sạn có đánh giá tốt</h1>
 			<nav class="navbar navbar-light bg-light">
@@ -91,7 +82,7 @@
 						<a href="#" class="btn btn-primary">Xem thêm</a>
 					</div>
 				</div>
-				<div class="card " style="width: 18rem; margin-bottom: 20px">
+				<div class="card" style="width: 18rem; margin-bottom: 20px">
 					<img class="card-img-top" src="user_page/img/header.png"
 						alt="Card image cap" style="max-height: 286; max-width: 180">
 					<div class="card-body">

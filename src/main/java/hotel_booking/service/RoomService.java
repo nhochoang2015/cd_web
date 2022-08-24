@@ -12,27 +12,37 @@ import hotel_booking.dto.PriceDTO;
 import hotel_booking.dto.HotelDTO;
 import hotel_booking.entity.Room;
 import hotel_booking.entity.Hotel;
-import hotel_booking.repository.RoomRepository;
+import hotel_booking.repository.LessonRepository;
 import hotel_booking.repository.HotelRepository;
 
 @Service
 public class RoomService {
 
 	@Autowired
-	private RoomRepository roomRepository;
+	private LessonRepository roomRepository;
 	@Autowired
 	private HotelService subjectService;
 	@Autowired
-	private RoomConverter chapterConverter;
+	private RoomConverter roomConverter;
 	@Autowired
 	private HotelRepository subjectRepository;
+	
 	List<RoomDTO> chapters = new ArrayList<RoomDTO>();
 
-	public Room findEntityByRoomID(int roomID) {
-		Room room = roomRepository.findByRoomID(roomID);
-		return room;
+	public RoomDTO findEntityByRoomID(int hotelID) {
+		
+		Room room = roomRepository.findRoomByHotelID(hotelID);
+		RoomDTO roomDTO = roomConverter.toDTO(room);
+		return roomDTO;
 	}
-	
+	public List<RoomDTO> findAllRoomByID(int roomID){
+		List<Room> rooms = roomRepository.findAllByRoomID(roomID);
+		List<RoomDTO> roomDTOList = new ArrayList<RoomDTO>();
+		for(Room room: rooms ) {
+			roomDTOList.add(roomConverter.toDTO(room));
+		}
+		return roomDTOList;
+	}
 	
 	
 //xóa chương

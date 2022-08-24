@@ -11,9 +11,6 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MA_DIA_DIEM")
 	private int locationID;
-	@ManyToOne
-	@JoinColumn(name="MA_TAI_KHOAN", nullable=false)
-	private Account account;
 	@Column(name = "TEN_DIA_DIEM", columnDefinition = "nvarchar(max)")
 	private String locationName;
 	@Column(name = "VI_TRI", columnDefinition = "nvarchar(max)")
@@ -24,7 +21,9 @@ public class Location {
 	private Set<Hotel> hotelList;
 	
 	
-	
+	public Location() {
+		
+	}
 	public Location(int locationID, String locationName, String position, String pic, Set<Hotel> hotelList) {
 		super();
 		this.locationID = locationID;
@@ -63,12 +62,7 @@ public class Location {
 	public void setHotelList(Set<Hotel> hotelList) {
 		this.hotelList = hotelList;
 	}
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+
 	
 	
 }

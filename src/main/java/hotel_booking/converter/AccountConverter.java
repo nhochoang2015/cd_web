@@ -1,27 +1,16 @@
 package hotel_booking.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.Converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import hotel_booking.dto.AccountDTO;
-import hotel_booking.dto.HotelDTO;
-import hotel_booking.dto.LocationDTO;
 import hotel_booking.entity.Account;
-import hotel_booking.entity.Role;
-import hotel_booking.entity.Hotel;
-import hotel_booking.entity.Location;
-import hotel_booking.service.RoleService;
 
 @Component
 public class AccountConverter {
-	@Autowired
-	private RoleService roleService;
 
-	public static AccountDTO toDTO(Account entity) {
+	public AccountDTO toDTO(Account entity) {
 		int accountID = entity.getAccountID();
 		String accountName = entity.getAccountName();
 		String nickName = entity.getNickName();
@@ -31,12 +20,8 @@ public class AccountConverter {
 		int validateCode = entity.getValidateCode();
 		String roleName = entity.getRole().getRoleName();
 		boolean active = entity.isActive();
-		List<Location> locationList = entity.getLocation();
-		List<LocationDTO> locationDTOList = new ArrayList<LocationDTO>();
-		for(Location location : locationList) {
-			locationDTOList.add(LocationConverter.toDTO(location));
-		}
-		AccountDTO dto = new AccountDTO(accountID, accountName, nickName, password, email, phoneNumber,validateCode, roleName, active,locationDTOList);
+		
+		AccountDTO dto = new AccountDTO(accountID, accountName, nickName, password, email, phoneNumber,validateCode, roleName, active);
 		return dto;
 	}
 

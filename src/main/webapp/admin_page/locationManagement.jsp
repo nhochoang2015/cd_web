@@ -1,6 +1,7 @@
+<%@page import="hotel_booking.dto.LocationDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="elementary_web.dto.SubjectDTO"%>
+<%@page import="hotel_booking.dto.HotelDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <!doctype html>
@@ -42,55 +43,47 @@
 										placeholder="Nhập tên hoặc mã môn học cần tìm">
 								</div>
 								<button type="button" class="btn btn-primary"
-									data-toggle="modal" data-target="#createSubject">Tạo
-									môn học</button>
+									data-toggle="modal" data-target="#createSubject">Tạo địa điểm</button>
 
 							</div>
 							<table>
 								<thead>
 									<tr>
-										<th>Mã môn học</th>
-										<th>Tên môn học</th>
-										<th>Active</th>
+										<th>Tên địa điểm</th>
+										<th>Link vị trí</th>
+										<th>Link hình ảnh</th>
 										<th>Chi tiết</th>
-										<th>Xóa môn học</th>
-
 									</tr>
 								</thead>
 								<%
-								List<SubjectDTO> subjectList = (ArrayList<SubjectDTO>) request.getAttribute("subjectList");
-								for (SubjectDTO subject : subjectList) {
+								List<LocationDTO> locationDTOList = (ArrayList<LocationDTO>) request.getAttribute("locationDTOList");
+								for (LocationDTO location : locationDTOList) {
 								%>
 								<tbody id="myTable">
 									<tr>
-									<td><%=subject.getSubjectID()%></td>
-									<td><%=subject.getSubjectName()%>
-										<button type="button" class="btn btn-primary"
+									<td><%=location.getLocationName()%></td>
+									<td><%=location.getPosition()%>
+										<!--  <button type="button" class="btn btn-primary"
 												data-toggle="modal" data-target="#updateSubjectName"
 												title="Sủa tên môn">
 											<i class="fa-solid fa-pen-to-square"></i>
-										</button></td>
+										</button>--></td>
 
-									<td id="hiddenResult"><%=subject.isActive()%></td>
+									<td id="hiddenResult"><%=location.getPic()%></td>
 									<td><a title="Đến trang quản lý chương"
-											href="../admin/chapter?subjectID=<%=subject.getSubjectID()%>"><button
+											href="../admin/hotel-management?locationID=<%=location.getLocationID()%>"><button
 													type="button" class="btn btn-primary">Xem</button></a></td>
-									<td>
-										<%
-										if (subject.isActive()) {
-										%>
-										<button type="button" class="btn btn-danger" id="btnDelete"
-												onclick="location.href='./unactiveSubject?subjectID=<%=subject.getSubjectID()%>'"
-												onclick="function();">Xóa</button> <%
- } else {
- %>
+									
+										
+										<!-- <button type="button" class="btn btn-danger" id="btnDelete"
+												onclick="location.href='./unactiveSubject?subjectID='"
+												onclick="function();">Xóa</button> 
+
 										<button type="button" class="btn btn-danger" id="btnRestore"
-												onclick="location.href='./activeSubject?subjectID=<%=subject.getSubjectID()%>'"
-												onclick="function();">Phục hồi</button>
-									</td>
-									<%
-									}
-									%>
+												onclick="location.href='./activeSubject?subjectID='"
+												onclick="function();">Phục hồi</button> -->
+									
+									
 								</tr>
 									</tbody>
 								<!-- Modal -->
@@ -125,7 +118,7 @@
 								</form>
 
 								<form
-									action="./renameSubject?subjectID=<%=subject.getSubjectID()%>&newSubjectName=''"
+									action="./renameSubject?subjectID=&newSubjectName=''"
 									method="post">
 									<div class="modal fade in" id="updateSubjectName" tabindex="-1"
 										role="dialog" aria-labelledby="exampleModalLabel"
@@ -150,7 +143,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="submit" class="btn btn-primary"
-														onclick="location.href='./renameSubject?subjectID=<%=subject.getSubjectID()%>&newSubjectName='">Xác
+														onclick="location.href='./renameSubject?subjectID=&newSubjectName='">Xác
 														nhận</button>
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">Close</button>
@@ -222,14 +215,7 @@
 		</div>
 	</div>
 	<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+
 </script>
 </body>
 

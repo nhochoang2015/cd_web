@@ -24,10 +24,10 @@ private AccountRepository accountRepository;
 private RoomRegisterConverter subjectRegisterConverter;
 //Đăng ký môn
 public void Regist(int accountID,int roomID) {
-	RoomRegisterDTO registDTO = new RoomRegisterDTO(accountID, roomID);
-	RoomRegister register = subjectRegisterConverter.toEntity(registDTO);
-	subjectRegisterRepository.save(register);
-	
+//	RoomRegisterDTO registDTO = new RoomRegisterDTO(accountID, roomID);
+//	RoomRegister register = subjectRegisterConverter.toEntity(registDTO);
+//	subjectRegisterRepository.save(register);
+//	
 }
 
 

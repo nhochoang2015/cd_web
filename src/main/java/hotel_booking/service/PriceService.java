@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import hotel_booking.converter.PriceConverter;
 import hotel_booking.dto.PriceDTO;
 import hotel_booking.entity.Price;
-import hotel_booking.repository.LessonRepository;
+import hotel_booking.repository.PriceRepository;
 
 @Service
 public class PriceService {
 
 	@Autowired
-	LessonRepository lessonRepository;
+	PriceRepository lessonRepository;
 	@Autowired
 	PriceConverter lessonConverter;
 

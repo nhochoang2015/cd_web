@@ -42,7 +42,6 @@
 <link rel="stylesheet" type="text/css"
 	href="user_page/lib/slick/slick.css" />
 
-
 <!-- Customized Bootstrap Stylesheet -->
 <link href="user_page/css/style.css" rel="stylesheet">
 <link href="user_page/fonts/chalk/stylesheet.css" rel="stylesheet">
@@ -85,7 +84,7 @@
 					if (accountDTO.getRoleName().equals("ADMIN")) {
 					%>
 
-					<a href="./admin/accountManagement" class="nav-item nav-link">Amin
+					<a href="./admin/account-Management" class="nav-item nav-link">Amin
 						Page</a>
 					<div id="logout-container">
 						<div class="dropdown">
@@ -122,8 +121,7 @@
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item"
 									href="./account?accountID=<%=accountDTO.getAccountID()%>">Tài
-									khoản</a> <a class="dropdown-item" href="./subject-management">Quản
-									lý môn</a>
+									khoản</a> 
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="./logout">Logout</a>
 							</div>

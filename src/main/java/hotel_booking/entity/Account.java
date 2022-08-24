@@ -28,22 +28,14 @@ public class Account {
 	private int validateCode;
 	@Column(name = "HOAT_DONG")
 	private boolean active;
-	@OneToMany(mappedBy ="account",fetch = FetchType.EAGER)
-	private List<Location> location;
 	@ManyToOne
 	@JoinColumn(name = "MA_VAI_TRO", nullable = false)
 	private Role role;
 	@OneToMany(mappedBy = "account")
 	List<RoomRegister> roomtRegisters;
 	
-	
-	
-
-
-
-	public Account(int accountID, String accountName, String nickName, String password, String email,
-			String phoneNumber, int validateCode, boolean active, List<Location> location, Role role,
-			Hotel subjectby) {
+	public Account(int accountID, @NotEmpty(message = "Chưa nhập tên tài khoản") String accountName, String nickName,
+			String password, String email, String phoneNumber, int validateCode, boolean active, Role role) {
 		super();
 		this.accountID = accountID;
 		this.accountName = accountName;
@@ -55,7 +47,7 @@ public class Account {
 		this.active = active;
 		this.role = role;
 	}
-	
+
 	public Account() {
 		super();
 	}
@@ -131,14 +123,6 @@ public class Account {
 
 	public void setActive(boolean active) {
 		this.active = active;
-	}
-
-	public List<Location> getLocation() {
-		return location;
-	}
-
-	public void setLocation(List<Location> location) {
-		this.location = location;
 	}
 
 	public List<RoomRegister> getRoomtRegisters() {

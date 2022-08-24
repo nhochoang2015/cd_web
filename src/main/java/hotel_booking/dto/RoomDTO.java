@@ -9,21 +9,44 @@ public class RoomDTO {
 	private String roomName;
 	private boolean active;
 	private int hotelID;
-	private int day;
-	private Date date;
+	
+	private int person;
+	private String service;
 	private List<PriceDTO> priceList;
-	public RoomDTO(int roomID, String roomName, boolean active, int hotelID, int day, Date date,
+	
+	public RoomDTO() {
+		
+	}
+	public RoomDTO(int roomID, String roomName, boolean active, int hotelID,String service,int person,
 			List<PriceDTO> priceList) {
 		super();
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.active = active;
 		this.hotelID = hotelID;
-		this.day = day;
-		this.date = date;
+		
+		this.service=service;
+		this.person=person;
 		this.priceList = priceList;
 		
 	}
+	
+	public int getPerson() {
+		return person;
+	}
+
+	public void setPerson(int person) {
+		this.person = person;
+	}
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
+	}
+
 	public int getRoomID() {
 		return roomID;
 	}
@@ -48,18 +71,7 @@ public class RoomDTO {
 	public void setHotelID(int hotelID) {
 		this.hotelID = hotelID;
 	}
-	public int getDay() {
-		return day;
-	}
-	public void setDay(int day) {
-		this.day = day;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 	public List<PriceDTO> getPriceList() {
 		return priceList;
 	}
