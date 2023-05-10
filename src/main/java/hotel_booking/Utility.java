@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
 public class Utility {
-
+	// Convert password to MD5 
 	public static String convertToMD5(String text) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(text.getBytes());
